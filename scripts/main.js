@@ -1,6 +1,6 @@
 // variables de nour :
 let nav = document.querySelector('nav')
-let allAnime = ""
+let header = document.querySelector('header')
 
 
 
@@ -83,10 +83,14 @@ var url = 'https://graphql.anilist.co',
     .then(data => {
       const mediaList = data.data;
       // Afficher les médias dans la console
-      console.log(mediaList);
+      for (let i = 0; i < mediaList.Page.media.length; i++) {
+        header.style.background = `url(${mediaList.Page.media[i].bannerImage}) center/cover rgb(255,255,255)`
+      }
       
     })
-    .catch(error => {console.logg("Erreur lors de la récup des données :", error)});
+    .catch(error => {console.log("Erreur lors de la récup des données :", error)});
+
+
 // event de nour
 
 nav.addEventListener("click", function(e){
@@ -113,4 +117,5 @@ nav.addEventListener("click", function(e){
     }
     }
 })
+
 

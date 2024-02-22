@@ -1,13 +1,53 @@
 body{
     color: #d5b395;
+    background-image: url(https://s4.anilist.co/file/anilistcdn/media/anime/banner/1-OquNCNB6srGe.jpg0);
 }
 
 header{
     height: 100vh;
     background: rgb(255,255,255);
     background: linear-gradient(270deg, rgba(255,255,255,0) 54%, rgba(0,0,0,0.8575805322128851) 100%);
+    .subtitles{
+        color: gray;
+    }
+    .anime_description{
+        color: #dadada;
+        font-size: 1rem;
+        margin-bottom: 50px;
+    }
+    .left_content{
+        width: 25%;
+        padding-top: 20%;
+        margin-left: 80px;
+    }
+    .play{
+        background-color: #f47521;
+        color: black;
+        text-decoration: none;
+        padding: 10px 20px;
+        margin-right: 20px;
+        transition: 0.3s all ease-in-out;
+        i{
+            margin-right: 10px;
+        }
+        &:hover{
+            background-color: #ec9459;
+            transition: 0.3s all ease-in-out;
+        }
+    }
+    .bookmark{
+        border: 2px solid #f47521;
+        padding: 8px 10px;
+        transition: 0.3s all ease-in-out;
+        color: #f47521;
+        &:hover{
+            color: #ec9459; 
+            border: 2px solid #ec9459;
+            transition: 0.3s all ease-in-out;
+        }
+    }
+} 
 
-}
 
 nav{
     width: 700px;
