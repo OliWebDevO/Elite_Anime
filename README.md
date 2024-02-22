@@ -1,11 +1,11 @@
-##Travailler en collaboration sur GITHUB
+#Travailler en collaboration sur GITHUB
 
-## Fork et création de sa branche de travail
-# Chef de projet
+# Fork et création de sa branche de travail
+## Chef de projet
 
 Créer un repo et envoyer le lien aux autres
 
-# Membres de l'équipe
+## Membres de l'équipe
 
 1) Duppliquer (Fork) le repo du chef de projet
    
