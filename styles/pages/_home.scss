@@ -1,0 +1,32 @@
+body{
+    background-color: #483C32;
+    color: #d5b395;
+}
+
+nav{
+    width: 700px;
+    padding: 200px;
+    margin: 100px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.active{
+    background-color: bisque;
+    border: 0;
+    border-radius: 10px;
+    padding: 20px;
+    transition: .5s all ease-in-out;
+}
+
+button{
+    font-size: 25px;
+    background-color: #d5b395;
+    color: #483C32;
+    border: 0;
+    transition: .3s all ease-in-out;
+    padding: 5px 20px;
+    border-radius: 10px;
+}
