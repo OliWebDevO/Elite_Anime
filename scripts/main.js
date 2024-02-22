@@ -1,5 +1,6 @@
 // variables de nour :
 let nav = document.querySelector('nav')
+let allAnime = ""
 
 
 
@@ -77,34 +78,15 @@ var url = 'https://graphql.anilist.co',
         })
     };
 
-// Faire la requête HTTP à l'API
-fetch(url, options)
-  .then(handleResponse)
-  .then(handleData)
-  .catch(handleError);
-
-// Fonction pour gérer la réponse HTTP
-function handleResponse(response) {
-    return response.json().then(function (json) {
-        return response.ok ? json : Promise.reject(json);
-    });
-}
-
-// Fonction pour gérer les données de la réponse
-function handleData(data) {
-    // Récupérer les médias à partir des données
-    const mediaList = data.data;
-    // Afficher les médias dans la console
-    console.log(mediaList);
-}
-
-// Fonction pour gérer les erreurs
-function handleError(error) {
-    alert('Erreur, vérifiez la console');
-    console.error(error);
-}
-
-
+    fetch(url, options)
+    .then(response => response.json())
+    .then(data => {
+      const mediaList = data.data;
+      // Afficher les médias dans la console
+      console.log(mediaList);
+      
+    })
+    .catch(error => {console.logg("Erreur lors de la récup des données :", error)});
 // event de nour
 
 nav.addEventListener("click", function(e){
