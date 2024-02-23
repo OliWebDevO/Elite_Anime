@@ -1,5 +1,10 @@
 // Here we define our query as a multi-line string
 // Storing it in a separate .graphql/.gql file is also possible
+
+// tippy('swiper-slide', {
+//   content: 'My tooltip!',
+// });
+
 var swiper = new Swiper(".mySwiper", {
     slidesPerView: 4,
     spaceBetween: 30,
@@ -123,9 +128,27 @@ var swiper = new Swiper(".mySwiper", {
               }
             }
           }
+
+          // wrapper.addEventListener("mouseover", (event) => {
+          //   if(event.target.closest('.swiper-slide').classList.contains('swiper-slide')) {
+          //     let tips = event.target.closest('.swiper-slide').dataset.index
+          //     // tippy(`${event.target.closest('.swiper-slide')}`, {
+          //     //   content: `${mediaList.Page.media[tips].description}`,
+          //     // });
+              
+          //     document.querySelector('.note').classList.add.active
+              
+          //    }
+          // });
+
+          tippy('swiper-slide', {
+            content: 'My tooltip!',
+          });
+
           // Délégation d'event sur wrapper pour catcher un click sur un anime
-    wrapper.addEventListener('click', function(event){
-      if(event.target.closest('.swiper-slide').classList.contains('swiper-slide')) {
+      wrapper.addEventListener('click', function(event){
+        if(event.target.closest('.swiper-slide').classList.contains('swiper-slide')) 
+          {
         let index = event.target.closest('.swiper-slide').dataset.index 
         popup.innerHTML = ""
         popup.innerHTML = `
@@ -135,13 +158,27 @@ var swiper = new Swiper(".mySwiper", {
         </div>
         <div class="popup__txt">
           <h3>${mediaList.Page.media[index].title.english}</h3>
+          <h5>Genres : ${mediaList.Page.media[index].genres}</h5>
+          <div class="flex">
+          <div class="subflex">
+          <h5> Studio : ${mediaList.Page.media[index].studios.edges[0].node.name}</h5>
+          <h5> Score : ${mediaList.Page.media[index].averageScore} / 100 </h5>
+          </div>
+          <div class="subflex">
+          <h5> Nombre d'épisodes : ${mediaList.Page.media[index].episodes}</h5>
+          <h5>Durée : ${mediaList.Page.media[index].duration} min</h5>
+          </div>
+          </div>
+
           <p>${mediaList.Page.media[index].description}</p>
+          
+          
         </div>
         <div class="close" title="fermer">❌</div>
         `
         popup.classList.add('active')
-      }
-    })
+         }
+      })
     // Délégation d'event sur popup pour aller chercher la ❌
     popup.addEventListener("click", function(event) {
       if (event.target.classList.contains('close')) {

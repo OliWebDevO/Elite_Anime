@@ -58,12 +58,17 @@ h1 {
 
   .note {
     position: absolute;
+    z-index: 10000;
     bottom:5px;
     right:5px;
     font-size: 30px;
     color:#fff;
     transform:translateX(120%);
     transition:.3s all ease-in-out;
+    display: none;
+    &.active{
+      display: block;
+    }
   }
   .popup {
     position: fixed;
@@ -77,6 +82,14 @@ h1 {
     transition:.3s all ease-in-out;
     display: flex;
     z-index: 10000;
+    .flex {
+      display: flex;
+      flex-direction: column;
+    }
+    .subflex {
+      display: flex;
+      justify-content: space-evenly;
+    }
     &.active {
       transform:translate(-50%,-50%);
     }
@@ -96,9 +109,15 @@ h1 {
         font-weight: normal;
         font-size: 50px;
       }
+      h5 {
+        text-align: center;
+        font-weight: normal;
+        font-size: 24px;
+      }
       p {
         text-align: center;
         line-height: 30px;
+        font-size: 20px;
       }
     }
     .close {
