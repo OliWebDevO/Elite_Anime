@@ -73,6 +73,8 @@ var swiper = new Swiper(".mySwiper", {
     }
   }
   `;
+  const wrapper = document.querySelector('.wrapper')
+  const popup = document.querySelector('.popup')
   let titre1 = document.querySelector('.unun')
   let container1 = document.querySelector('.un')
   let container2 = document.querySelector('.deux')
@@ -109,28 +111,56 @@ var swiper = new Swiper(".mySwiper", {
           for (let n = 0; n < mediaList.Page.media[i].genres.length; n++) {
             if (mediaList.Page.media[i].genres[n] == genre) {
               if (mediaList.Page.media[i].title.english == null) {
-                container.innerHTML += `<div class="swiper-slide"><img src="${mediaList.Page.media[i].coverImage.extraLarge}" alt=""><h3>${mediaList.Page.media[i].title.romaji}</h3></div>`
+                container.innerHTML += `<div class="swiper-slide" data-index="${i}"><img src="${mediaList.Page.media[i].coverImage.extraLarge}" alt=""><h3>${mediaList.Page.media[i].title.romaji}</h3></div>`
                } else if (mediaList.Page.media[i].title.english == "Cowboy Bebop: The Movie - Knockin' on Heaven's Door") {
-                container.innerHTML += `<div class="swiper-slide"><img src="${mediaList.Page.media[i].coverImage.extraLarge}" alt=""><h3>Cowboy Bebop: The Movie</h3></div>`
+                container.innerHTML += `<div class="swiper-slide" data-index="${i}"><img src="${mediaList.Page.media[i].coverImage.extraLarge}" alt=""><h3>Cowboy Bebop: The Movie</h3></div>`
                }
                else if (mediaList.Page.media[i].title.english == "Cowboy Bebop: The Movie - Knockin' on Heaven's Door") {
-                container.innerHTML += `<div class="swiper-slide"><img src="${mediaList.Page.media[i].coverImage.extraLarge}" alt=""><h3>Cowboy Bebop: The Movie</h3></div>`
+                container.innerHTML += `<div class="swiper-slide" data-index="${i}"><img src="${mediaList.Page.media[i].coverImage.extraLarge}" alt=""><h3>Cowboy Bebop: The Movie</h3></div>`
                }
               else {
-              container.innerHTML += `<div class="swiper-slide"><img src="${mediaList.Page.media[i].coverImage.extraLarge}" alt=""><h3>${mediaList.Page.media[i].title.english}</h3></div>`
+              container.innerHTML += `<div class="swiper-slide" data-index="${i}"><img src="${mediaList.Page.media[i].coverImage.extraLarge}" alt=""><h3>${mediaList.Page.media[i].title.english}</h3></div>`
               }
             }
           }
+          // Délégation d'event sur wrapper pour catcher un click sur un anime
+    wrapper.addEventListener('click', function(event){
+      if(event.target.closest('.swiper-slide').classList.contains('swiper-slide')) {
+        let index = event.target.closest('.swiper-slide').dataset.index 
+        popup.innerHTML = ""
+        popup.innerHTML = `
+        <div class="popup__img">
+          
+          <img src="${mediaList.Page.media[index].coverImage.extraLarge}">
+        </div>
+        <div class="popup__txt">
+          <h3>${mediaList.Page.media[index].title.english}</h3>
+          <p>${mediaList.Page.media[index].description}</p>
+        </div>
+        <div class="close" title="fermer">❌</div>
+        `
+        popup.classList.add('active')
       }
-    }
+    })
+    // Délégation d'event sur popup pour aller chercher la ❌
+    popup.addEventListener("click", function(event) {
+      if (event.target.classList.contains('close')) {
+        event.target.closest('.popup').classList.remove("active")
+      }
+    })
+        }
+      }
   
-    searchAnimeBy("Action", container1)
-    searchAnimeBy("Adventure", container2)
-    searchAnimeBy("Comedy", container3)
-    searchAnimeBy("Horror", container4)
-    searchAnimeBy("Drama", container5)
-    searchAnimeBy("Romance", container6)
-  
+      searchAnimeBy("Action", container1)
+      searchAnimeBy("Adventure", container2)
+      searchAnimeBy("Comedy", container3)
+      searchAnimeBy("Horror", container4)
+      searchAnimeBy("Drama", container5)
+      searchAnimeBy("Romance", container6)
+
     })
     .catch(error => {console.log("Erreur lors de la récup des données :", error)});
   
+
+
+
