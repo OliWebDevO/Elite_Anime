@@ -1,6 +1,7 @@
 body{
     background-color: #483C32;
     color: #d5b395;
+    font-family: "Open Sans", sans-serif;
     // margin: 20px auto;
     // // width: 1000px;
     // // display: flex;
@@ -40,7 +41,65 @@ h1 {
     align-items: center;
     border-radius: 8px;
     text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    &:hover .element {
+      opacity: 1;
+      transform: translateX(0);
+      transition: .4s all cubic-bezier(0.68, -0.55, 0.265, 1.55) .2s;
+    }
+    &:hover:before {
+      bottom: 0;
+      right: 0;
   }
+  }
+  .swiper-slide:before {
+    content:'';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	bottom:-350px;
+	right:-350px;
+	z-index:2;
+	transition:.1s all ease-in-out;
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,0.9178265056022409) 0%, rgba(0,0,0,0.5340730042016807) 100%);    
+    // background: rgb(9,3,7);
+    // background: linear-gradient(133deg, rgba(9,3,7,0.2861519607843137) 0%, rgba(106,37,81,0.7791491596638656) 100%);
+    cursor: pointer;
+    &:hover img{
+        transform: scale(1.1);
+
+        
+    }
+
+}
+.swiper-slide img {
+  transition: .5s all ease-in-out;
+}
+.swiper-slide:hover img {
+    
+    transform:scale(1.05);
+    filter:grayscale(20%);
+    transition: .5s all ease-in-out;
+
+}
+.element {
+    font-size: 1rem;
+    opacity: 0;
+    position: absolute;
+    transform: translateX(100%);
+    // transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    transition: .4s all cubic-bezier(0.68, -0.55, 0.265, 1.55) .2s;
+    top:2%;
+    left:5%;
+    z-index: 100000;
+    text-align: left;
+    h1 {
+      font-size: 1.4rem;
+
+    }
+}
 
   .wrapper img {
     display: block;
@@ -72,7 +131,7 @@ h1 {
   }
   .popup {
     position: fixed;
-    background:#fff;
+    background:#d5b395;
     width: 90%;
     height: 90%;
     top:50%;
@@ -88,8 +147,15 @@ h1 {
     }
     .subflex {
       display: flex;
-      justify-content: space-evenly;
+      justify-content: space-between;
     }
+   
+    // .bg {
+    //   background-color: black;
+    //   border-radius: 8px;
+    //   margin: 5px 0;
+    //   padding: 20px;
+    // }
     &.active {
       transform:translate(-50%,-50%);
     }
@@ -103,8 +169,10 @@ h1 {
     }
     &__txt {
       width: 60%;
-      padding:25px;
+      padding:50px;
+      color: #483C32;
       h3 {
+        margin-top: 20px;
         text-align: center;
         font-weight: normal;
         font-size: 50px;
@@ -113,6 +181,7 @@ h1 {
         text-align: center;
         font-weight: normal;
         font-size: 24px;
+        margin-top: 15px;
       }
       p {
         text-align: center;

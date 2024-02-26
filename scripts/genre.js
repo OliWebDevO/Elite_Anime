@@ -116,15 +116,11 @@ var swiper = new Swiper(".mySwiper", {
           for (let n = 0; n < mediaList.Page.media[i].genres.length; n++) {
             if (mediaList.Page.media[i].genres[n] == genre) {
               if (mediaList.Page.media[i].title.english == null) {
-                container.innerHTML += `<div class="swiper-slide" data-index="${i}"><img src="${mediaList.Page.media[i].coverImage.extraLarge}" alt=""><h3>${mediaList.Page.media[i].title.romaji}</h3></div>`
+                container.innerHTML += `<div class="swiper-slide" data-index="${i}"><img src="${mediaList.Page.media[i].coverImage.extraLarge}" alt=""><h3>${mediaList.Page.media[i].title.romaji}</h3><div class="element"><h1>${mediaList.Page.media[i].title.romaji}</h1><p>Popularité : ${mediaList.Page.media[i].averageScore} / 100</p><p>Nombre d'épisodes : ${mediaList.Page.media[i].episodes}</p><p>Studio : ${mediaList.Page.media[i].studios.edges[0].node.name}</p></div></div>`
                } else if (mediaList.Page.media[i].title.english == "Cowboy Bebop: The Movie - Knockin' on Heaven's Door") {
-                container.innerHTML += `<div class="swiper-slide" data-index="${i}"><img src="${mediaList.Page.media[i].coverImage.extraLarge}" alt=""><h3>Cowboy Bebop: The Movie</h3></div>`
-               }
-               else if (mediaList.Page.media[i].title.english == "Cowboy Bebop: The Movie - Knockin' on Heaven's Door") {
-                container.innerHTML += `<div class="swiper-slide" data-index="${i}"><img src="${mediaList.Page.media[i].coverImage.extraLarge}" alt=""><h3>Cowboy Bebop: The Movie</h3></div>`
-               }
-              else {
-              container.innerHTML += `<div class="swiper-slide" data-index="${i}"><img src="${mediaList.Page.media[i].coverImage.extraLarge}" alt=""><h3>${mediaList.Page.media[i].title.english}</h3></div>`
+                container.innerHTML += `<div class="swiper-slide" data-index="${i}"><img src="${mediaList.Page.media[i].coverImage.extraLarge}" alt=""><h3>Cowboy Bebop: The Movie</h3><div class="element"><h1>Cowboy Bebop: The Movie</h1><p>Popularité : ${mediaList.Page.media[i].averageScore} / 100</p><p>Nombre d'épisodes : ${mediaList.Page.media[i].episodes}</p><p>Studio : ${mediaList.Page.media[i].studios.edges[0].node.name}</p></div></div>`
+               } else {
+              container.innerHTML += `<div class="swiper-slide" data-index="${i}"><img src="${mediaList.Page.media[i].coverImage.extraLarge}" alt=""><h3>${mediaList.Page.media[i].title.english}</h3><div class="element"><h1>${mediaList.Page.media[i].title.english}</h1><p>Popularité : ${mediaList.Page.media[i].averageScore} / 100</p><p>Nombre d'épisodes : ${mediaList.Page.media[i].episodes}</p><p>Studio : ${mediaList.Page.media[i].studios.edges[0].node.name}</p></div></div>`
               }
             }
           }
@@ -157,8 +153,12 @@ var swiper = new Swiper(".mySwiper", {
           <img src="${mediaList.Page.media[index].coverImage.extraLarge}">
         </div>
         <div class="popup__txt">
-          <h3>${mediaList.Page.media[index].title.english}</h3>
-          <h5>Genres : ${mediaList.Page.media[index].genres}</h5>
+          <div class="bg">
+            <h3>${mediaList.Page.media[index].title.english}</h3>
+          </div>
+          <div class="bg">
+            <h5>Genres : ${mediaList.Page.media[index].genres}</h5>
+          </div>
           <div class="flex">
           <div class="subflex">
           <h5> Studio : ${mediaList.Page.media[index].studios.edges[0].node.name}</h5>
@@ -170,7 +170,9 @@ var swiper = new Swiper(".mySwiper", {
           </div>
           </div>
 
-          <p>${mediaList.Page.media[index].description}</p>
+          <div class="bg">
+            <p>${mediaList.Page.media[index].description}</p>
+          </div>
           
           
         </div>
